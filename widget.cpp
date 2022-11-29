@@ -103,3 +103,11 @@ void Widget::on_backButton_4_clicked()
     ui->stackedWidget->setCurrentIndex(1);
 }
 
+
+void Widget::on_pushButton_clicked()
+{
+
+    scan.stopCmd();
+    ui->plainTextEdit->appendPlainText("Process Terminated");
+}
+

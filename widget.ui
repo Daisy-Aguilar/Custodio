@@ -19,14 +19,14 @@
   <widget class="QStackedWidget" name="stackedWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>10</y>
      <width>801</width>
      <height>461</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>3</number>
    </property>
    <widget class="QWidget" name="page_0">
     <widget class="QPushButton" name="startButton">
@@ -190,7 +190,7 @@
     <widget class="QPushButton" name="startFullScanButton">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>220</x>
        <y>300</y>
        <width>150</width>
        <height>30</height>
@@ -233,6 +233,19 @@
        <width>411</width>
        <height>141</height>
       </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>300</y>
+       <width>150</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Stop</string>
      </property>
     </widget>
    </widget>

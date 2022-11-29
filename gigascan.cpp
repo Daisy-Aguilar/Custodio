@@ -45,7 +45,7 @@ void gigaScan::stateChanged(QProcess::ProcessState newState) {
 
 QString gigaScan::enterCmd() {
     QByteArray command;
-    QByteArray clamavPath = "..\\TestingClamAV_FullScan\\clamAVFiles\\";
+    QByteArray clamavPath = "..\\Custodio\\clamAVFiles\\";
 
     command.append(clamavPath+"clamscan -r C:\\");
     command.append("\r");
