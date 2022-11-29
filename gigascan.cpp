@@ -1,4 +1,5 @@
 #include "gigascan.h"
+#include "widget.h"
 #include <QFileDialog>
 
 gigaScan::gigaScan(QObject *parent)
@@ -6,7 +7,6 @@ gigaScan::gigaScan(QObject *parent)
 {
     connect(&cmdPrompt,&QProcess::stateChanged,this,&gigaScan::stateChanged);
     connect(&cmdPrompt,&QProcess::readyReadStandardOutput,this,&gigaScan::readyReadStandardOutput);
-
 }
 
 void gigaScan::startCmd() {
@@ -38,23 +38,25 @@ void gigaScan::stateChanged(QProcess::ProcessState newState) {
             break;
         case QProcess::Running:
             emit output("Running");
-            startScan();
+            inputCommand();
             break;
     }
 }
 
-QString gigaScan::enterCmd() {
+QString gigaScan::fullScanCmd() {
     QByteArray command;
     QByteArray clamavPath = "..\\Custodio\\clamAVFiles\\";
 
-    command.append(clamavPath+"clamscan -r C:\\");
-    command.append("\r");
-    command.append("\n");
+    command.append(clamavPath+"clamscan -r --move=..\\Custodio\\Quarantine C:\\ \r \n");
+    //command.append("\r");
+    //command.append("\n");
     return command;
 }
 
-void gigaScan::startScan() {
-    cmdPrompt.write(enterCmd().toUtf8());
+void gigaScan::inputCommand() {
+    //if(ui->stackedWidget) {
+        cmdPrompt.write(fullScanCmd().toUtf8());
+    //}
 }
 
 void gigaScan::readyReadStandardOutput() {

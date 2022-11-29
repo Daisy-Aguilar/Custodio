@@ -12,7 +12,7 @@ class gigaScan : public QObject
     Q_OBJECT
 public:
     explicit gigaScan(QObject *parent = nullptr); // for scanning
-    QString enterCmd(); // for inputting command
+    QString fullScanCmd(); // for inputting command
     void setPath(const QString &path);
 
 signals:
@@ -30,7 +30,8 @@ private slots:
 private:
     QProcess cmdPrompt;
     bool isRunning;
-    void startScan();
+    void inputCommand();
+    QString curPage;
 
 };
 

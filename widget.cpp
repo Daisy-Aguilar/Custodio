@@ -8,6 +8,7 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
     connect(&scan,&gigaScan::output,this,&Widget::output);
+
 }
 
 Widget::~Widget()
