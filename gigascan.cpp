@@ -31,13 +31,13 @@ void gigaScan::stopCmd() {
 void gigaScan::stateChanged(QProcess::ProcessState newState) {
     switch(newState) {
         case QProcess::NotRunning:
-            emit output("Not Running");
+            emit output("Scan Stopped");
             break;
         case QProcess::Starting:
-            emit output("Starting...");
+            emit output("Starting Scan...");
             break;
         case QProcess::Running:
-            emit output("Running");
+            emit output("Running Scan");
             startScan();
             break;
     }
