@@ -2,9 +2,10 @@
 #include <QFileDialog>
 
 gigaScan::gigaScan(QObject *parent)
+    : QObject{parent}
 {
-    //connect(&cmdPrompt,&QProcess::stateStatus,this,&gigaScan::stateStatus);
-    //connect(&cmdPrompt,&QProcess::readyReadStandardOutput,this,&gigaScan::readyReadStandardOutput();
+    connect(&cmdPrompt,&QProcess::stateChanged,this,&gigaScan::stateChanged);
+    connect(&cmdPrompt,&QProcess::readyReadStandardOutput,this,&gigaScan::readyReadStandardOutput);
 
 }
 
@@ -27,7 +28,7 @@ void gigaScan::stopCmd() {
     emit output("Completed");
 } */
 
-void gigaScan::stateStatus(QProcess::ProcessState newState) {
+void gigaScan::stateChanged(QProcess::ProcessState newState) {
     switch(newState) {
         case QProcess::NotRunning:
             emit output("Not Running");

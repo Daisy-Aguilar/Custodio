@@ -24,7 +24,7 @@ public slots:
 
 private slots:
    // void finished(int exitCode, QProcess::ExitStatus exitStatus);
-    void stateStatus(QProcess::ProcessState newState);
+    void stateChanged(QProcess::ProcessState newState);
     void readyReadStandardOutput();
 
 private:
