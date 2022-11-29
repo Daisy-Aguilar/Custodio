@@ -2,6 +2,7 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include "gigascan.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -16,6 +17,8 @@ public:
     ~Widget();
 
 private slots:
+    void output(QString data);
+
     void on_startButton_clicked();
 
     void on_scanButton_clicked();
@@ -46,5 +49,6 @@ private slots:
 
 private:
     Ui::Widget *ui;
+    gigaScan scan;
 };
 #endif // WIDGET_H

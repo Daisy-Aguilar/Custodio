@@ -1,11 +1,13 @@
 #include "widget.h"
 #include "./ui_widget.h"
+#include <QFileDialog>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
+    connect(&scan,&gigaScan::output,this,&Widget::output);
 }
 
 Widget::~Widget()
@@ -59,8 +61,12 @@ void Widget::on_backButton_clicked()
 void Widget::on_startFullScanButton_clicked()
 {
     //ui->stackedWidget->setCurrentIndex();
+    scan.startCmd();
 }
 
+void Widget::output(QString data) {
+    ui->plainTextEdit->appendPlainText(data);
+}
 
 void Widget::on_backButton_1_clicked()
 {

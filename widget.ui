@@ -225,6 +225,16 @@
       <string>Back</string>
      </property>
     </widget>
+    <widget class="QPlainTextEdit" name="plainTextEdit">
+     <property name="geometry">
+      <rect>
+       <x>213</x>
+       <y>93</y>
+       <width>411</width>
+       <height>141</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="page_4">
     <widget class="QPushButton" name="startFolderScanButton">
