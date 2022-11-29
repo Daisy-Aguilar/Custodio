@@ -106,8 +106,6 @@ void Widget::on_backButton_4_clicked()
 
 void Widget::on_pushButton_clicked()
 {
-
     scan.stopCmd();
-    ui->plainTextEdit->appendPlainText("Process Terminated");
 }
 

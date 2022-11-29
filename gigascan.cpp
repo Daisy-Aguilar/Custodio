@@ -21,23 +21,23 @@ void gigaScan::stopCmd() {
     cmdPrompt.close();
 }
 
-/* void gigaScan::finished(int exitCode, QProcess::ExitStatus exitStatus) {
+void gigaScan::finished(int exitCode, QProcess::ExitStatus exitStatus) {
     if (!isRunning) return;
     Q_UNUSED(exitCode);
     Q_UNUSED(exitStatus);
     emit output("Completed");
-} */
+}
 
 void gigaScan::stateChanged(QProcess::ProcessState newState) {
     switch(newState) {
         case QProcess::NotRunning:
-            emit output("Scan Stopped");
+            emit output("Stopped");
             break;
         case QProcess::Starting:
-            emit output("Starting Scan...");
+            emit output("Starting");
             break;
         case QProcess::Running:
-            emit output("Running Scan");
+            emit output("Running");
             startScan();
             break;
     }

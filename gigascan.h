@@ -23,7 +23,7 @@ public slots:
     void stopCmd();
 
 private slots:
-   // void finished(int exitCode, QProcess::ExitStatus exitStatus);
+    void finished(int exitCode, QProcess::ExitStatus exitStatus);
     void stateChanged(QProcess::ProcessState newState);
     void readyReadStandardOutput();
 
