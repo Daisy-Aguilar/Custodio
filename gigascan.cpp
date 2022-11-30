@@ -54,9 +54,17 @@ QString gigaScan::fullScanCmd() {
 }
 
 void gigaScan::inputCommand() {
-    //if(ui->stackedWidget) {
+    //if(ui->stackedWidget) { if index is full scan
         cmdPrompt.write(fullScanCmd().toUtf8());
     //}
+}
+
+void gigaScan::folderScan() {
+     cmdPrompt.write(folderCommand().toUtf8());
+}
+
+QString gigaScan::folderCommand() {
+
 }
 
 void gigaScan::readyReadStandardOutput() {

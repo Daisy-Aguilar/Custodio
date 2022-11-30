@@ -14,6 +14,8 @@ public:
     explicit gigaScan(QObject *parent = nullptr); // for scanning
     QString fullScanCmd(); // for inputting command
     void setPath(const QString &path);
+    void folderScan();
+    QString folderCommand();
 
 signals:
     void output(QString data);

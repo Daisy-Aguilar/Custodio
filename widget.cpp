@@ -78,6 +78,7 @@ void Widget::on_backButton_1_clicked()
 void Widget::on_startFolderScanButton_clicked()
 {
     //ui->stackedWidget->setCurrentIndex();
+    scan.startCmd();
 }
 
 
@@ -108,5 +109,19 @@ void Widget::on_backButton_4_clicked()
 void Widget::on_pushButton_clicked()
 {
     scan.stopCmd();
+}
+
+
+void Widget::on_chooseDirectoryButton_clicked()
+{
+    QString filename = QFileDialog::getExistingDirectory(this, "Choose Folder");
+    ui->textBrowser->setText(filename.toUtf8());
+}
+
+
+void Widget::on_chooseFileButton_clicked()
+{
+    QString filename = QFileDialog::getOpenFileNames(this,tr("Open File"), "C://", "All Files (*.*);;").join("");
+    ui->textBrowser->setText(filename.toUtf8());
 }
 

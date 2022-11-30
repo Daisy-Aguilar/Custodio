@@ -49,6 +49,10 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_chooseDirectoryButton_clicked();
+
+    void on_chooseFileButton_clicked();
+
 private:
     Ui::Widget *ui;
     gigaScan scan;
