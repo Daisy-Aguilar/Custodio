@@ -314,13 +314,13 @@
       <string>Choose File</string>
      </property>
     </widget>
-    <widget class="QTextBrowser" name="textBrowser">
+    <widget class="QPlainTextEdit" name="folderScanBox">
      <property name="geometry">
       <rect>
        <x>210</x>
-       <y>90</y>
-       <width>256</width>
-       <height>192</height>
+       <y>163</y>
+       <width>241</width>
+       <height>131</height>
       </rect>
      </property>
     </widget>

@@ -66,7 +66,8 @@ void Widget::on_startFullScanButton_clicked()
 }
 
 void Widget::output(QString data) {
-    ui->plainTextEdit->appendPlainText(data);
+    //ui->plainTextEdit->appendPlainText(data); // folder scan box
+    ui->folderScanBox->appendPlainText(data);
 }
 
 void Widget::on_backButton_1_clicked()
@@ -115,13 +116,20 @@ void Widget::on_pushButton_clicked()
 void Widget::on_chooseDirectoryButton_clicked()
 {
     QString filename = QFileDialog::getExistingDirectory(this, "Choose Folder");
-    ui->textBrowser->setText(filename.toUtf8());
+    ui->folderScanBox->setPlainText(filename.toUtf8());
 }
 
 
 void Widget::on_chooseFileButton_clicked()
 {
     QString filename = QFileDialog::getOpenFileNames(this,tr("Open File"), "C://", "All Files (*.*);;").join("");
-    ui->textBrowser->setText(filename.toUtf8());
+    ui->folderScanBox->setPlainText(filename.toUtf8());
+}
+
+void Widget::on_folderScanBox_textChanged()
+{
+    QString path = ui->folderScanBox->toPlainText();
+    path.replace("/","\\");
+    scan.setPath(path);
 }
 

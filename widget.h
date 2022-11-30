@@ -53,6 +53,8 @@ private slots:
 
     void on_chooseFileButton_clicked();
 
+    void on_folderScanBox_textChanged();
+
 private:
     Ui::Widget *ui;
     gigaScan scan;

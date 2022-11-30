@@ -7,6 +7,8 @@ gigaScan::gigaScan(QObject *parent)
 {
     connect(&cmdPrompt,&QProcess::stateChanged,this,&gigaScan::stateChanged);
     connect(&cmdPrompt,&QProcess::readyReadStandardOutput,this,&gigaScan::readyReadStandardOutput);
+
+    folderScanPath = "";
 }
 
 void gigaScan::startCmd() {
@@ -38,7 +40,8 @@ void gigaScan::stateChanged(QProcess::ProcessState newState) {
             break;
         case QProcess::Running:
             emit output("Running");
-            inputCommand();
+            // inputCommand();
+            folderScan();
             break;
     }
 }
@@ -64,11 +67,23 @@ void gigaScan::folderScan() {
 }
 
 QString gigaScan::folderCommand() {
+    QByteArray command;
+    QByteArray clamavPath = "..\\Custodio\\clamAVFiles\\";
+    command.append(clamavPath+ "clamscan -r  '"+getPath().toUtf8()+ "' \r \n");
 
+    return command;
 }
 
 void gigaScan::readyReadStandardOutput() {
     if (!isRunning) return;
     QByteArray data = cmdPrompt.readAllStandardOutput();
     emit output(data);
+}
+
+void gigaScan::setPath(const QString &newPath) {
+    folderScanPath = newPath;
+}
+
+QString gigaScan::getPath() const {
+    return folderScanPath;
 }
