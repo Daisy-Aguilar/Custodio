@@ -69,7 +69,7 @@ void gigaScan::folderScan() {
 QString gigaScan::folderCommand() {
     QByteArray command;
     QByteArray clamavPath = "..\\Custodio\\clamAVFiles\\";
-    command.append(clamavPath+ "clamscan -r  '"+getPath().toUtf8()+ "' \r \n");
+    command.append(clamavPath+ "clamscan -r --move=..\\Custodio\\Quarantine '"+getPath().toUtf8()+ "' \r \n");
 
     return command;
 }

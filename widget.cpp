@@ -107,7 +107,7 @@ void Widget::on_backButton_4_clicked()
 }
 
 
-void Widget::on_pushButton_clicked()
+void Widget::on_stopFullScanButton_clicked()
 {
     scan.stopCmd();
 }
@@ -131,5 +131,11 @@ void Widget::on_folderScanBox_textChanged()
     QString path = ui->folderScanBox->toPlainText();
     path.replace("/","\\");
     scan.setPath(path);
+}
+
+
+void Widget::on_stopFolderScan_clicked()
+{
+    scan.stopCmd();
 }
 

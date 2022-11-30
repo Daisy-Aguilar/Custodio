@@ -47,13 +47,15 @@ private slots:
 
     void on_backButton_4_clicked();
 
-    void on_pushButton_clicked();
+    void on_stopFullScanButton_clicked();
 
     void on_chooseDirectoryButton_clicked();
 
     void on_chooseFileButton_clicked();
 
     void on_folderScanBox_textChanged();
+
+    void on_stopFolderScan_clicked();
 
 private:
     Ui::Widget *ui;
