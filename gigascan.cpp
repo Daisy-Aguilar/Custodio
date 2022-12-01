@@ -58,7 +58,7 @@ void gigaScan::inputCommand() { // depending on page index, return different sca
 }
 
 
-QString gigaScan::folderCommand() {
+QString gigaScan::folderCommand() { // returns commands with the specific file directory
     QByteArray command;
     QByteArray clamavPath = "..\\Custodio\\clamAVFiles\\";
     command.append(clamavPath+ "clamscan -r -o -l ..\\Custodio\\clamAVLog --move=..\\Custodio\\Quarantine '"+getPath().toUtf8()+ "' \r \n");
