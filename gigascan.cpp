@@ -40,8 +40,8 @@ void gigaScan::stateChanged(QProcess::ProcessState newState) {
             break;
         case QProcess::Running:
             emit output("Running");
-            // inputCommand();
-            folderScan();
+            inputCommand();
+            //folderScan();
             break;
     }
 }
@@ -57,14 +57,17 @@ QString gigaScan::fullScanCmd() {
 }
 
 void gigaScan::inputCommand() {
-    //if(ui->stackedWidget) { if index is full scan
+    if(getIndex() == 3) { // if page is fullscan page, full scan
         cmdPrompt.write(fullScanCmd().toUtf8());
-    //}
+    }
+    if(getIndex() == 4) {
+        cmdPrompt.write(folderCommand().toUtf8());
+    }
+    if(getIndex() == 5) {
+        // cmdPrompt.wrie(scheduledCommand Function);
+    }
 }
 
-void gigaScan::folderScan() {
-     cmdPrompt.write(folderCommand().toUtf8());
-}
 
 QString gigaScan::folderCommand() {
     QByteArray command;

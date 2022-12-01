@@ -19,6 +19,8 @@ public:
 private slots:
     void output(QString data);
 
+    int getIndex();
+
     void on_startButton_clicked();
 
     void on_scanButton_clicked();

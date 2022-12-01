@@ -15,11 +15,11 @@ public:
     QString fullScanCmd(); // for inputting command
     void setPath(const QString &path);
     QString getPath() const;
-    void folderScan();
     QString folderCommand();
 
 signals:
     void output(QString data);
+    int getIndex();
 
 public slots:
     void startCmd();

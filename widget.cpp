@@ -8,6 +8,7 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
     connect(&scan,&gigaScan::output,this,&Widget::output);
+    connect(&scan,&gigaScan::getIndex,this,&Widget::getIndex);
 
 }
 
@@ -66,8 +67,15 @@ void Widget::on_startFullScanButton_clicked()
 }
 
 void Widget::output(QString data) {
-    //ui->plainTextEdit->appendPlainText(data); // folder scan box
-    ui->folderScanBox->appendPlainText(data);
+    if(getIndex() == 3) {
+        ui->plainTextEdit->appendPlainText(data); // folder scan box
+    }
+    if(getIndex() == 4) {
+        ui->folderScanBox->appendPlainText(data);
+    }
+    if(getIndex() == 5) {
+        // send data to scheduled scan box
+    }
 }
 
 void Widget::on_backButton_1_clicked()
@@ -139,3 +147,8 @@ void Widget::on_stopFolderScan_clicked()
     scan.stopCmd();
 }
 
+int Widget::getIndex() {
+    int curIndex;
+    curIndex = ui->stackedWidget->currentIndex();
+    return(curIndex);
+}
