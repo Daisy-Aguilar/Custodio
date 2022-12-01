@@ -9,7 +9,7 @@ Widget::Widget(QWidget *parent)
     ui->setupUi(this);
     connect(&scan,&gigaScan::output,this,&Widget::output);
     connect(&scan,&gigaScan::getIndex,this,&Widget::getIndex);
-
+    lockText();
 }
 
 Widget::~Widget()
@@ -67,10 +67,10 @@ void Widget::on_startFullScanButton_clicked()
 }
 
 void Widget::output(QString data) {
-    if(getIndex() == 3) {
-        ui->plainTextEdit->appendPlainText(data); // folder scan box
+    if(getIndex() == 3) { // put data in fullscanbox
+        ui->fullScanBox->appendPlainText(data);
     }
-    if(getIndex() == 4) {
+    if(getIndex() == 4) { // put data in folderscanbox
         ui->folderScanBox->appendPlainText(data);
     }
     if(getIndex() == 5) {
@@ -78,63 +78,63 @@ void Widget::output(QString data) {
     }
 }
 
-void Widget::on_backButton_1_clicked()
+void Widget::on_backButton_1_clicked() // move between pages
 {
     ui->stackedWidget->setCurrentIndex(2);
 }
 
 
-void Widget::on_startFolderScanButton_clicked()
+void Widget::on_startFolderScanButton_clicked() // start folder scan
 {
     //ui->stackedWidget->setCurrentIndex();
     scan.startCmd();
 }
 
 
-void Widget::on_backButton_2_clicked()
+void Widget::on_backButton_2_clicked() // move between pages
 {
     ui->stackedWidget->setCurrentIndex(2);
 }
 
 
-void Widget::on_startScheduledScanButton_clicked()
+void Widget::on_startScheduledScanButton_clicked() // scheduled scan
 {
     //ui->stackedWidget->setCurrentIndex();
 }
 
 
-void Widget::on_backButton_3_clicked()
+void Widget::on_backButton_3_clicked() // move between pages
 {
     ui->stackedWidget->setCurrentIndex(2);
 }
 
 
-void Widget::on_backButton_4_clicked()
+void Widget::on_backButton_4_clicked() // move between pages
 {
     ui->stackedWidget->setCurrentIndex(1);
 }
 
 
-void Widget::on_stopFullScanButton_clicked()
+void Widget::on_stopFullScanButton_clicked() // stop scan
 {
     scan.stopCmd();
 }
 
 
-void Widget::on_chooseDirectoryButton_clicked()
+void Widget::on_chooseDirectoryButton_clicked() // open file directory to choose folder
 {
     QString filename = QFileDialog::getExistingDirectory(this, "Choose Folder");
     ui->folderScanBox->setPlainText(filename.toUtf8());
 }
 
 
-void Widget::on_chooseFileButton_clicked()
+void Widget::on_chooseFileButton_clicked() // open file directory to choose file
 {
     QString filename = QFileDialog::getOpenFileNames(this,tr("Open File"), "C://", "All Files (*.*);;").join("");
     ui->folderScanBox->setPlainText(filename.toUtf8());
 }
 
-void Widget::on_folderScanBox_textChanged()
+void Widget::on_folderScanBox_textChanged() // reformat filepath to be used in cmdprompt
 {
     QString path = ui->folderScanBox->toPlainText();
     path.replace("/","\\");
@@ -142,13 +142,21 @@ void Widget::on_folderScanBox_textChanged()
 }
 
 
-void Widget::on_stopFolderScan_clicked()
+void Widget::on_stopFolderScan_clicked() // stop command prompt
 {
     scan.stopCmd();
 }
 
-int Widget::getIndex() {
-    int curIndex;
-    curIndex = ui->stackedWidget->currentIndex();
+int Widget::getIndex() { // proxy to get index of page and return it to scan
+    int curIndex = ui->stackedWidget->currentIndex();
     return(curIndex);
+}
+
+void Widget::calendarTesting() {
+    ui->calendarWidget->firstDayOfWeek(); // possible for scheduled scan?
+}
+
+void Widget::lockText() { // textboxes do not take input
+    ui->fullScanBox->setReadOnly(1);
+    ui->folderScanBox->setReadOnly(1);
 }

@@ -26,7 +26,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>3</number>
    </property>
    <widget class="QWidget" name="page_0">
     <widget class="QPushButton" name="startButton">
@@ -225,7 +225,7 @@
       <string>Back</string>
      </property>
     </widget>
-    <widget class="QPlainTextEdit" name="plainTextEdit">
+    <widget class="QPlainTextEdit" name="fullScanBox">
      <property name="geometry">
       <rect>
        <x>213</x>
@@ -375,6 +375,16 @@
      </property>
      <property name="text">
       <string>Back</string>
+     </property>
+    </widget>
+    <widget class="QCalendarWidget" name="calendarWidget">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>150</y>
+       <width>200</width>
+       <height>117</height>
+      </rect>
      </property>
     </widget>
    </widget>

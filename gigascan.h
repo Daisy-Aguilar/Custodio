@@ -12,30 +12,28 @@ class gigaScan : public QObject
     Q_OBJECT
 public:
     explicit gigaScan(QObject *parent = nullptr); // for scanning
-    QString fullScanCmd(); // for inputting command
-    void setPath(const QString &path);
+    QString fullScanCmd(); // for inputting fullscan command
+    void setPath(const QString &path); // set and getPath are used as a proxy to return filepath to scan
     QString getPath() const;
-    QString folderCommand();
+    QString folderCommand(); // for inputting folderscan command
 
 signals:
-    void output(QString data);
-    int getIndex();
+    void output(QString data); // function that displays our data to a widget
+    int getIndex(); // proxy to get index to scan
 
 public slots:
-    void startCmd();
+    void startCmd(); // start and stop command prompt in QProcess
     void stopCmd();
 
 private slots:
-    void finished(int exitCode, QProcess::ExitStatus exitStatus);
     void stateChanged(QProcess::ProcessState newState);
     void readyReadStandardOutput();
 
 private:
-    QProcess cmdPrompt;
-    bool isRunning;
-    void inputCommand();
-    QString curPage;
-    QString folderScanPath;
+    QProcess cmdPrompt; // linking QProcess to cmdPrompt
+    bool isRunning; // flag to see if cmd is running or not
+    void inputCommand(); // input command to command prompt in qprocess
+    QString folderScanPath; // path that gets used in folderscancmd
 
 };
 

@@ -59,6 +59,10 @@ private slots:
 
     void on_stopFolderScan_clicked();
 
+    void calendarTesting();
+
+    void lockText();
+
 private:
     Ui::Widget *ui;
     gigaScan scan;
