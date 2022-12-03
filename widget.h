@@ -44,6 +44,50 @@ private slots:
 
     void on_backButton_4_clicked();
 
+    void on_helpButton_clicked();
+
+    void on_backButton_0_clicked();
+
+    void on_helpButton_1_clicked();
+
+    void on_stopScanButton_clicked();
+
+    void on_stopScanButton_1_clicked();
+
+    void on_chooseFileButton_clicked();
+
+    void on_chooseFolderButton_clicked();
+
+    void on_stopScanButton_2_clicked();
+
+    void on_chooseFileButton_1_clicked();
+
+    void on_chooseFolderButton_1_clicked();
+
+    void on_hourlyCheckBox_stateChanged(int arg1);
+
+    void on_dailyCheckBox_stateChanged(int arg1);
+
+    void on_weeklyCheckBox_stateChanged(int arg1);
+
+    void on_monthlyCheckBox_stateChanged(int arg1);
+
+    void on_viewQuarantineButton_clicked();
+
+    void on_backButton_5_clicked();
+
+    void on_viewQuarantineButton_1_clicked();
+
+    void on_deleteAllFilesButton_clicked();
+
+    void on_restoreFilesButton_clicked();
+
+    void on_backButton_6_clicked();
+
+    void on_chooseFilesButton_clicked();
+
+    void on_restoreFilesButton_2_clicked();
+
 private:
     Ui::Widget *ui;
 };
