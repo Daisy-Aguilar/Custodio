@@ -195,7 +195,7 @@ background-color: rgb(255, 255, 255);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../../Downloads/logopng.png</pixmap>
+      <pixmap>Logo/logopng.png</pixmap>
      </property>
     </widget>
     <widget class="QPushButton" name="helpButton">
@@ -523,7 +523,7 @@ background-color: rgb(255, 255, 255);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../../Pictures/resizedLogo.png</pixmap>
+      <pixmap>Logo/resizedLogo.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>false</bool>
@@ -1579,7 +1579,7 @@ color: rgb(255, 255, 255);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../../Pictures/resizedLogo.png</pixmap>
+      <pixmap>Logo/resizedLogo.png</pixmap>
      </property>
     </widget>
     <widget class="QFrame" name="frame_4">
@@ -2148,7 +2148,7 @@ color: rgb(255, 255, 255);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../../Pictures/resizedLogo.png</pixmap>
+      <pixmap>Logo/resizedLogo.png</pixmap>
      </property>
     </widget>
     <widget class="QPushButton" name="stopScanButton">
@@ -2383,7 +2383,7 @@ color: rgb(255, 255, 255);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../../Pictures/resizedLogo.png</pixmap>
+      <pixmap>Logo/resizedLogo.png</pixmap>
      </property>
     </widget>
     <widget class="QPushButton" name="stopScanButton_1">
@@ -2531,7 +2531,7 @@ color: rgb(255, 255, 255);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../../Pictures/resizedLogo.png</pixmap>
+      <pixmap>Logo/resizedLogo.png</pixmap>
      </property>
     </widget>
     <widget class="QPushButton" name="stopScanButton_2">
@@ -2957,7 +2957,7 @@ color: rgb(255, 255, 255);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../../Pictures/resizedLogo.png</pixmap>
+      <pixmap>Logo/resizedLogo.png</pixmap>
      </property>
     </widget>
     <widget class="QFrame" name="frame_11">
@@ -3302,7 +3302,7 @@ color: rgb(255, 255, 255);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../../Pictures/resizedLogo.png</pixmap>
+      <pixmap>Logo/resizedLogo.png</pixmap>
      </property>
     </widget>
     <widget class="QFrame" name="frame_13">
@@ -3750,7 +3750,7 @@ color: rgb(255, 255, 255);</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../../Pictures/resizedLogo.png</pixmap>
+      <pixmap>Logo/resizedLogo.png</pixmap>
      </property>
     </widget>
     <widget class="QFrame" name="frame_16">
