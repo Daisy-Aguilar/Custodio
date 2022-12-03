@@ -19,6 +19,8 @@ set(PROJECT_SOURCES
         widget.cpp
         widget.h
         widget.ui
+        gigascan.h
+        gigascan.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

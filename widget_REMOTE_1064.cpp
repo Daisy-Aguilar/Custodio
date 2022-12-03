@@ -68,10 +68,10 @@ void Widget::on_startFullScanButton_clicked()
 
 void Widget::output(QString data) {
     if(getIndex() == 3) { // put data in fullscanbox
-        ui->plainTextEdit->appendPlainText(data);
+        ui->fullScanBox->appendPlainText(data);
     }
     if(getIndex() == 4) { // put data in folderscanbox
-        ui->plainTextEdit_2->appendPlainText(data);
+        ui->folderScanBox->appendPlainText(data);
     }
     if(getIndex() == 5) {
         // send data to scheduled scan box
@@ -115,138 +115,6 @@ void Widget::on_backButton_4_clicked() // move between pages
 }
 
 
-void Widget::on_helpButton_clicked()
-{
-    //ui->stackedWidget->setCurrentIndex();
-}
-
-
-void Widget::on_backButton_0_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-}
-
-
-void Widget::on_helpButton_1_clicked()
-{
-    //ui->stackedWidget->setCurrentIndex();
-}
-
-
-void Widget::on_stopScanButton_clicked()
-{
-    //ui->stackedWidget->setCurrentIndex();
-}
-
-
-void Widget::on_stopScanButton_1_clicked()
-{
-    //ui->stackedWidget->setCurrentIndex();
-}
-
-
-void Widget::on_chooseFileButton_clicked()
-{
-    QString filename = QFileDialog::getOpenFileNames(this,tr("Open File"), "C://", "All Files (*.*);;").join("");
-    ui->plainTextEdit_2->setPlainText(filename.toUtf8());
-}
-
-
-void Widget::on_chooseFolderButton_clicked()
-{
-    //ui->stackedWidget->setCurrentIndex();
-}
-
-
-void Widget::on_stopScanButton_2_clicked()
-{
-    //ui->stackedWidget->setCurrentIndex();
-}
-
-
-void Widget::on_chooseFileButton_1_clicked()
-{
-    //ui->stackedWidget->setCurrentIndex();
-}
-
-
-void Widget::on_chooseFolderButton_1_clicked()
-{
-    //ui->stackedWidget->setCurrentIndex();
-}
-
-
-void Widget::on_hourlyCheckBox_stateChanged(int arg1)
-{
-    //ui->stackedWidget->setCurrentIndex();
-}
-
-
-void Widget::on_dailyCheckBox_stateChanged(int arg1)
-{
-    //ui->stackedWidget->setCurrentIndex();
-}
-
-
-void Widget::on_weeklyCheckBox_stateChanged(int arg1)
-{
-    //ui->stackedWidget->setCurrentIndex();
-}
-
-
-void Widget::on_monthlyCheckBox_stateChanged(int arg1)
-{
-    //ui->stackedWidget->setCurrentIndex();
-}
-
-
-void Widget::on_viewQuarantineButton_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(7);
-}
-
-
-void Widget::on_backButton_5_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(6);
-}
-
-
-void Widget::on_viewQuarantineButton_1_clicked()
-{
-    //ui->stackedWidget->setCurrentIndex();
-}
-
-
-void Widget::on_deleteAllFilesButton_clicked()
-{
-    //ui->stackedWidget->setCurrentIndex();
-}
-
-
-void Widget::on_restoreFilesButton_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(8);
-}
-
-
-void Widget::on_backButton_6_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(7);
-}
-
-
-void Widget::on_chooseFilesButton_clicked()
-{
-    //ui->stackedWidget->setCurrentIndex();
-}
-
-
-void Widget::on_restoreFilesButton_2_clicked()
-{
-    //ui->stackedWidget->setCurrentIndex();
-}
-
 void Widget::on_stopFullScanButton_clicked() // stop scan
 {
     scan.stopCmd();
@@ -256,13 +124,19 @@ void Widget::on_stopFullScanButton_clicked() // stop scan
 void Widget::on_chooseDirectoryButton_clicked() // open file directory to choose folder
 {
     QString filename = QFileDialog::getExistingDirectory(this, "Choose Folder");
-    ui->plainTextEdit_2->setPlainText(filename.toUtf8());
+    ui->folderScanBox->setPlainText(filename.toUtf8());
 }
 
 
+void Widget::on_chooseFileButton_clicked() // open file directory to choose file
+{
+    QString filename = QFileDialog::getOpenFileNames(this,tr("Open File"), "C://", "All Files (*.*);;").join("");
+    ui->folderScanBox->setPlainText(filename.toUtf8());
+}
+
 void Widget::on_folderScanBox_textChanged() // reformat filepath to be used in cmdprompt
 {
-    QString path = ui->plainTextEdit_2->toPlainText();
+    QString path = ui->folderScanBox->toPlainText();
     path.replace("/","\\");
     scan.setPath(path);
 }
@@ -278,10 +152,11 @@ int Widget::getIndex() { // proxy to get index of page and return it to scan
     return(curIndex);
 }
 
-//void Widget::calendarTesting() {
-    //ui->calendarWidget->firstDayOfWeek(); // possible for scheduled scan?
-//}
+void Widget::calendarTesting() {
+    ui->calendarWidget->firstDayOfWeek(); // possible for scheduled scan?
+}
 
 void Widget::lockText() { // textboxes do not take input
-    ui->plainTextEdit->setReadOnly(1); //fullScanBox
-    ui->plainTextEdit_2->setReadOnly(1);} //folderScanBox
+    ui->fullScanBox->setReadOnly(1);
+    ui->folderScanBox->setReadOnly(1);
+}
