@@ -12,16 +12,16 @@ Widget::Widget(QWidget *parent)
     connect(&scan,&gigaScan::getIndex,this,&Widget::getIndex);
     lockText();
     QPixmap pix("C:../Custodio/Logo/logopng.png");
-    ui->label->setPixmap(pix); //image on page_0
+    ui->label->setPixmap(pix.scaled(500,500)); //image on page_0
     QPixmap pix_1("C:../Custodio/Logo/resizedLogo.png");
-    ui->label_1->setPixmap(pix_1); //image on page_1
-    ui->label_15->setPixmap(pix_1); //image on page_2
-    ui->label_30->setPixmap(pix_1); //image on page_3
-    ui->label_31->setPixmap(pix_1); //image on page_4
-    ui->label_36->setPixmap(pix_1); //image on page_5
-    ui->label_42->setPixmap(pix_1); //image on page_6
-    ui->label_52->setPixmap(pix_1); //image on page_7
-    ui->label_64->setPixmap(pix_1); //image on page_8
+    ui->label_1->setPixmap(pix_1.scaled(250,250)); //image on page_1
+    ui->label_15->setPixmap(pix_1.scaled(250,250)); //image on page_2
+    ui->label_30->setPixmap(pix_1.scaled(250,250)); //image on page_3
+    ui->label_31->setPixmap(pix_1.scaled(250,250)); //image on page_4
+    ui->label_36->setPixmap(pix_1.scaled(250,250)); //image on page_5
+    ui->label_42->setPixmap(pix_1.scaled(250,250)); //image on page_6
+    ui->label_52->setPixmap(pix_1.scaled(250,250)); //image on page_7
+    ui->label_64->setPixmap(pix_1.scaled(250,250)); //image on page_8
 }
 
 Widget::~Widget()
