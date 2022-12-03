@@ -29,7 +29,7 @@
     <string notr="true">background-color: rgb(255, 255, 255);</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>8</number>
    </property>
    <widget class="QWidget" name="page_0">
     <widget class="QPushButton" name="startButton">
@@ -516,7 +516,7 @@ background-color: rgb(255, 255, 255);</string>
        <x>280</x>
        <y>40</y>
        <width>231</width>
-       <height>81</height>
+       <height>101</height>
       </rect>
      </property>
      <property name="text">
@@ -1572,7 +1572,7 @@ color: rgb(255, 255, 255);</string>
        <x>280</x>
        <y>40</y>
        <width>231</width>
-       <height>81</height>
+       <height>101</height>
       </rect>
      </property>
      <property name="text">
@@ -2141,7 +2141,7 @@ color: rgb(255, 255, 255);</string>
        <x>280</x>
        <y>40</y>
        <width>231</width>
-       <height>81</height>
+       <height>101</height>
       </rect>
      </property>
      <property name="text">
@@ -2376,7 +2376,7 @@ color: rgb(255, 255, 255);</string>
        <x>280</x>
        <y>40</y>
        <width>231</width>
-       <height>81</height>
+       <height>101</height>
       </rect>
      </property>
      <property name="text">
@@ -2524,7 +2524,7 @@ color: rgb(255, 255, 255);</string>
        <x>280</x>
        <y>40</y>
        <width>231</width>
-       <height>81</height>
+       <height>101</height>
       </rect>
      </property>
      <property name="text">
@@ -2950,7 +2950,7 @@ color: rgb(255, 255, 255);</string>
        <x>280</x>
        <y>40</y>
        <width>231</width>
-       <height>81</height>
+       <height>101</height>
       </rect>
      </property>
      <property name="text">
@@ -3295,7 +3295,7 @@ color: rgb(255, 255, 255);</string>
        <x>280</x>
        <y>40</y>
        <width>231</width>
-       <height>81</height>
+       <height>101</height>
       </rect>
      </property>
      <property name="text">
@@ -3743,7 +3743,7 @@ color: rgb(255, 255, 255);</string>
        <x>280</x>
        <y>40</y>
        <width>231</width>
-       <height>81</height>
+       <height>101</height>
       </rect>
      </property>
      <property name="text">
