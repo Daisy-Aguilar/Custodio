@@ -343,7 +343,7 @@ void Widget::lockText() { // textboxes do not take input
 }
 
 bool Widget::isDailyChecked() {
-    bool daily;
+    bool daily = 0;
     if(ui->dailyCheckBox->isChecked()) {
         daily = 1;
     }
@@ -351,7 +351,7 @@ bool Widget::isDailyChecked() {
 }
 
 bool Widget::isWeeklyChecked() {
-    bool weekly;
+    bool weekly = 0;
     if(ui->weeklyCheckBox->isChecked()) {
         weekly = 1;
     }
@@ -359,7 +359,7 @@ bool Widget::isWeeklyChecked() {
 }
 
 bool Widget::isMonthlyChecked() {
-    bool monthly;
+    bool monthly = 0;
     if(ui->monthlyCheckBox->isChecked()) {
         monthly = 1;
     }
