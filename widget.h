@@ -110,7 +110,6 @@ private slots:
     int giveWeekNum();
     void lockText();
     QString readPath();
-    void scanOnSchedule();
 
 
     void on_plainTextEdit_3_textChanged();

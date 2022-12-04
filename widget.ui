@@ -2575,7 +2575,7 @@ color: rgb(255, 255, 255);</string>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QPushButton" name="startScheduledScanButton">
+     <widget class="QPushButton" name="updateScheduledScanButton">
       <property name="geometry">
        <rect>
         <x>5</x>

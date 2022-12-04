@@ -449,6 +449,4 @@ QString Widget::readPath() {
     return path;
 }
 
-void Widget::scanOnSchedule() {
 
-}
