@@ -32,11 +32,12 @@ Widget::Widget(QWidget *parent)
     connect(&scan,&gigaScan::giveMonth,this,&Widget::giveMonth);
     connect(&scan,&gigaScan::giveDate,this,&Widget::giveDate);
     connect(&scan,&gigaScan::giveWeekNum,this,&Widget::giveWeekNum);
+    connect(&scan,&gigaScan::readPath,this,&Widget::readPath);
     isMonthlyChecked();
     setCheckBoxes();
-    scanOnSchedule();
     ui->calendarWidget->setVisible(0);
     ui->plainTextEdit_5->setPlainText(readPath().replace("\\\\","/"));
+    scan.startCmd();
 }
 
 Widget::~Widget()
@@ -100,6 +101,9 @@ void Widget::output(QString data) {
     if(getIndex() == 4) { // put data in folderscanbox
         ui->plainTextEdit_2->appendPlainText(data);
     }
+    /*if(getIndex() == 5) {
+        ui->plainTextEdit_4->appendPlainText(data);
+    } */
 }
 
 void Widget::on_backButton_1_clicked() // move between pages
@@ -121,7 +125,7 @@ void Widget::on_backButton_2_clicked() // move between pages
 }
 
 
-void Widget::on_startScheduledScanButton_clicked() // scheduled scan
+void Widget::on_updateScheduledScanButton_clicked()
 {
     if(ui->monthlyCheckBox->isChecked()) {
         std::ofstream file;
@@ -444,5 +448,5 @@ QString Widget::readPath() {
 }
 
 void Widget::scanOnSchedule() {
-    scan.scheduledScan();
+
 }

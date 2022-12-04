@@ -29,6 +29,7 @@ signals:
     void setCheckBoxes();
     QString giveDate();
     int giveWeekNum();
+    QString readPath();
 
 public slots:
     void startCmd(); // start and stop command prompt in QProcess

@@ -43,7 +43,7 @@ private slots:
 
     void on_backButton_2_clicked();
 
-    void on_startScheduledScanButton_clicked();
+    void on_updateScheduledScanButton_clicked();
 
     void on_backButton_3_clicked();
 

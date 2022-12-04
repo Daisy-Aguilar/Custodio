@@ -44,7 +44,7 @@ QString gigaScan::fullScanCmd() { // creates the command to run a fullscan to en
     QByteArray command;
     QByteArray clamavPath = "..\\Custodio\\clamAVFiles\\";
 
-    command.append(clamavPath+"clamscan -r -o -l ..\\Custodio\\clamAVLog --move=..\\Custodio\\Quarantine C:\\ \r \n");
+    command.append(clamavPath+"clamscan -r -i -l ..\\Custodio\\clamAVLog --move=..\\Custodio\\Quarantine C:\\ \r \n");
     return command;
 }
 
@@ -55,13 +55,16 @@ void gigaScan::inputCommand() { // depending on page index, return different sca
     if(getIndex() == 4) {
        cmdPrompt.write(folderCommand().toUtf8());
     }
+    if(getIndex() == 0) {
+        cmdPrompt.write(scheduledScan().toUtf8());
+    }
 }
 
 
 QString gigaScan::folderCommand() { // returns commands with the specific file directory
     QByteArray command;
     QByteArray clamavPath = "..\\Custodio\\clamAVFiles\\";
-    command.append(clamavPath+ "clamscan -r -o -l ..\\Custodio\\clamAVLog --move=..\\Custodio\\Quarantine '"+getPath().toUtf8()+ "' \r \n");
+    command.append(clamavPath+ "clamscan -r -i -l ..\\Custodio\\clamAVLog --move=..\\Custodio\\Quarantine '"+getPath().toUtf8()+ "' \r \n");
     return command;
 }
 
@@ -120,9 +123,11 @@ QString gigaScan::scheduledScan() {
     QString savedMonth = QString::fromStdString(str);
     QString savedDate = QString::fromStdString(date);
     int savedWeek = std::stoi(week);
-    command.append(clamavPath+"clamscan -r -o -l ..\\Custodio\\clamAVLog --move=..\\Custodio\\Quarantine '"+getPath().toUtf8()+ "' \r \n");
+    command.append(clamavPath+"clamscan -r -i -l ..\\Custodio\\clamAVLog --move=..\\Custodio\\Quarantine '"+readPath().toUtf8()+ "' \r \n");
     if (isDailyChecked() == 1) {
+        emit output("DAILY IS CHECKED");
         if(savedDate != giveDate().replace(" ","")) {
+            emit output("SAVED DATE DIF");
             std::string newDate = giveDate().replace(" ","").toStdString();
             std::ofstream file;
             file.open("..\\Custodio\\dateChecksAndFlags\\date.txt");
