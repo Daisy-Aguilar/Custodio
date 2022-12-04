@@ -53,7 +53,7 @@ void gigaScan::inputCommand() { // depending on page index, return different sca
         cmdPrompt.write(fullScanCmd().toUtf8());
     }
     if(getIndex() == 4) {
-        cmdPrompt.write(folderCommand().toUtf8());
+       cmdPrompt.write(folderCommand().toUtf8());
     }
 }
 
