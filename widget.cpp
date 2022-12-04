@@ -49,6 +49,7 @@ Widget::~Widget()
 void Widget::on_startButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    scan.startCmd();
 }
 
 
@@ -101,9 +102,9 @@ void Widget::output(QString data) {
     if(getIndex() == 4) { // put data in folderscanbox
         ui->plainTextEdit_2->appendPlainText(data);
     }
-    /*if(getIndex() == 5) {
-        ui->plainTextEdit_4->appendPlainText(data);
-    } */
+    if(getIndex() == 7) {
+        // ui->plainTextEdit_8->appendPlainText(data);
+    }
 }
 
 void Widget::on_backButton_1_clicked() // move between pages
@@ -277,6 +278,7 @@ void Widget::on_viewQuarantineButton_1_clicked()
 void Widget::on_deleteAllFilesButton_clicked()
 {
     //ui->stackedWidget->setCurrentIndex();
+    scan.startCmd();
 }
 
 

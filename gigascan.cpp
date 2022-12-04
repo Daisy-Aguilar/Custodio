@@ -48,6 +48,18 @@ QString gigaScan::fullScanCmd() { // creates the command to run a fullscan to en
     return command;
 }
 
+QString gigaScan::updateDatabase() {
+    QByteArray update = "..\\Custodio\\clamAVFiles\\freshclam";
+    return update;
+}
+
+QString gigaScan::deleteQuarantine() {
+    QByteArray command;
+    QByteArray clamavPath = "..\\Custodio\\clamAVFiles\\";
+    command.append(clamavPath+"clamscan -i --remove=yes ..\\Custodio\\Quarantine \r \n");
+    return command;
+}
+
 void gigaScan::inputCommand() { // depending on page index, return different scan function
    if(getIndex() == 3) {
         cmdPrompt.write(fullScanCmd().toUtf8());
@@ -57,6 +69,12 @@ void gigaScan::inputCommand() { // depending on page index, return different sca
     }
     if(getIndex() == 0) {
         cmdPrompt.write(scheduledScan().toUtf8());
+    }
+    if(getIndex() == 1) {
+        cmdPrompt.write(updateDatabase().toUtf8());
+    }
+    if(getIndex() == 7) {
+        cmdPrompt.write(deleteQuarantine().toUtf8());
     }
 }
 

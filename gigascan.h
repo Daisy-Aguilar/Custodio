@@ -18,6 +18,8 @@ public:
     QString folderCommand(); // for inputting folderscan command
     QString scheduledScan();
     void savePath(QString pathToSave);
+    QString updateDatabase();
+    QString deleteQuarantine();
 
 signals:
     void output(QString data); // function that displays our data to a widget
