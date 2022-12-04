@@ -83,7 +83,7 @@ void gigaScan::savePath(QString pathToSave) {
     pathToSave.replace(" ","_");
     std::string pathToWrite = pathToSave.toStdString();
     std::fstream file;
-    file.open("..\\Custodio\\savedPath.txt");
+    file.open("..\\Custodio\\savedPath.txt", std::fstream::out | std::fstream::trunc);
     file << pathToWrite;
     file.close();
 }
