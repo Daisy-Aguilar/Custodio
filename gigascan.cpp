@@ -134,8 +134,6 @@ QString gigaScan::scheduledScan() {
     QString savedWeekQ = QString::number(savedWeek);
     QString giveWeekQ = QString::number(giveWeekNum());
     if (isWeeklyChecked() == 1) {
-        emit output(savedWeekQ);
-        emit output(giveWeekQ);
         if(giveWeekNum() != savedWeek) {
             std::string weekNum = std::to_string(giveWeekNum());
             std::ofstream file;

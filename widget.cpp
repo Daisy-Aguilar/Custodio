@@ -330,6 +330,10 @@ void Widget::lockText() { // textboxes do not take input
     ui->plainTextEdit->setReadOnly(1); //fullScanBox
     ui->plainTextEdit_2->setReadOnly(1); //folderScanBox
     ui->plainTextEdit_3->setReadOnly(1); //folderScanBox
+    ui->plainTextEdit_4->setReadOnly(1);
+    ui->plainTextEdit_5->setReadOnly(1);
+    ui->plainTextEdit_6->setReadOnly(1);
+    ui->plainTextEdit_7->setReadOnly(1);
 }
 
 bool Widget::isDailyChecked() {
