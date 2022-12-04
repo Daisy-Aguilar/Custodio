@@ -95,16 +95,23 @@ private slots:
 
     void on_stopFullScanButton_clicked();
 
-    void on_chooseDirectoryButton_clicked();
-
-    void on_folderScanBox_textChanged();
-
     void on_stopFolderScan_clicked();
+
+    void on_plainTextEdit_5_textChanged();
 
     //void calendarTesting();
 
+    bool isDailyChecked();
+    bool isWeeklyChecked();
+    bool isMonthlyChecked();
+    int giveMonth();
+    void setCheckBoxes();
+    QString giveDate();
+    int giveWeekNum();
     void lockText();
 
+
+    void on_plainTextEdit_3_textChanged();
 
 private:
     Ui::Widget *ui;

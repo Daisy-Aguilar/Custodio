@@ -16,10 +16,20 @@ public:
     void setPath(const QString &path); // set and getPath are used as a proxy to return filepath to scan
     QString getPath() const;
     QString folderCommand(); // for inputting folderscan command
+    QString scheduledScan();
+    void savePath(QString pathToSave);
+    QString readPath();
 
 signals:
     void output(QString data); // function that displays our data to a widget
     int getIndex(); // proxy to get index to scan
+    bool isDailyChecked();
+    bool isWeeklyChecked();
+    bool isMonthlyChecked();
+    int giveMonth();
+    void setCheckBoxes();
+    QString giveDate();
+    int giveWeekNum();
 
 public slots:
     void startCmd(); // start and stop command prompt in QProcess

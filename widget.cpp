@@ -2,6 +2,9 @@
 #include "./ui_widget.h"
 #include <QFileDialog>
 #include <QPixmap>
+#include <fstream>
+#include <iostream>
+#include <QDate>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -22,6 +25,16 @@ Widget::Widget(QWidget *parent)
     ui->label_42->setPixmap(pix_1.scaled(250,250,Qt::KeepAspectRatio)); //image on page_6
     ui->label_52->setPixmap(pix_1.scaled(250,250,Qt::KeepAspectRatio)); //image on page_7
     ui->label_64->setPixmap(pix_1.scaled(250,250,Qt::KeepAspectRatio)); //image on page_8
+    connect(&scan,&gigaScan::output,this,&Widget::output);
+    connect(&scan,&gigaScan::isDailyChecked,this,&Widget::isDailyChecked);
+    connect(&scan,&gigaScan::isWeeklyChecked,this,&Widget::isWeeklyChecked);
+    connect(&scan,&gigaScan::isMonthlyChecked,this,&Widget::isMonthlyChecked);
+    connect(&scan,&gigaScan::giveMonth,this,&Widget::giveMonth);
+    connect(&scan,&gigaScan::giveDate,this,&Widget::giveDate);
+    connect(&scan,&gigaScan::giveWeekNum,this,&Widget::giveWeekNum);
+    isMonthlyChecked();
+    setCheckBoxes();
+    ui->calendarWidget->setVisible(0);
 }
 
 Widget::~Widget()
@@ -85,9 +98,6 @@ void Widget::output(QString data) {
     if(getIndex() == 4) { // put data in folderscanbox
         ui->plainTextEdit_2->appendPlainText(data);
     }
-    if(getIndex() == 5) {
-        // send data to scheduled scan box
-    }
 }
 
 void Widget::on_backButton_1_clicked() // move between pages
@@ -111,7 +121,39 @@ void Widget::on_backButton_2_clicked() // move between pages
 
 void Widget::on_startScheduledScanButton_clicked() // scheduled scan
 {
-    //ui->stackedWidget->setCurrentIndex();
+    if(ui->monthlyCheckBox->isChecked()) {
+        std::ofstream file;
+        file.open("..\\Custodio\\dateChecksAndFlags\\mCheck.txt");
+        file << "1 \n";
+        file.close();
+     } else {
+        std::ofstream file;
+        file.open("..\\Custodio\\dateChecksAndFlags\\mCheck.txt");
+        file << "0 \n";
+        file.close();
+    }
+    if(ui->dailyCheckBox->isChecked()) {
+        std::ofstream file;
+        file.open("..\\Custodio\\dateChecksAndFlags\\dailyCheck.txt");
+        file << "1 \n";
+        file.close();
+     } else {
+        std::ofstream file;
+        file.open("..\\Custodio\\dateChecksAndFlags\\dailyCheck.txt");
+        file << "0 \n";
+        file.close();
+    }
+    if(ui->weeklyCheckBox->isChecked()) {
+        std::ofstream file;
+        file.open("..\\Custodio\\dateChecksAndFlags\\weeklyCheck.txt");
+        file << "1 \n";
+        file.close();
+     } else {
+        std::ofstream file;
+        file.open("..\\Custodio\\dateChecksAndFlags\\weeklyCheck.txt");
+        file << "0 \n";
+        file.close();
+    }
 }
 
 
@@ -147,28 +189,21 @@ void Widget::on_helpButton_1_clicked()
 
 void Widget::on_stopScanButton_clicked()
 {
-    //ui->stackedWidget->setCurrentIndex();
+    scan.stopCmd();
 }
 
 
 void Widget::on_stopScanButton_1_clicked()
 {
-    //ui->stackedWidget->setCurrentIndex();
+    scan.stopCmd();
 }
 
 
 void Widget::on_chooseFileButton_clicked()
 {
     QString filename = QFileDialog::getOpenFileNames(this,tr("Open File"), "C://", "All Files (*.*);;").join("");
-    ui->plainTextEdit_2->setPlainText(filename.toUtf8());
+    ui->plainTextEdit_3->setPlainText(filename.toUtf8());
 }
-
-
-void Widget::on_chooseFolderButton_clicked()
-{
-    //ui->stackedWidget->setCurrentIndex();
-}
-
 
 void Widget::on_stopScanButton_2_clicked()
 {
@@ -178,13 +213,16 @@ void Widget::on_stopScanButton_2_clicked()
 
 void Widget::on_chooseFileButton_1_clicked()
 {
-    //ui->stackedWidget->setCurrentIndex();
+    QString filename = QFileDialog::getOpenFileNames(this,tr("Open File"), "C://", "All Files (*.*);;").join("");
+    ui->plainTextEdit_5->setPlainText(filename.toUtf8());
 }
 
 
 void Widget::on_chooseFolderButton_1_clicked()
 {
-    //ui->stackedWidget->setCurrentIndex();
+    QString filename = QFileDialog::getExistingDirectory(this, "Choose Folder");
+    ui->plainTextEdit_5->setPlainText(filename.toUtf8());
+
 }
 
 
@@ -265,18 +303,10 @@ void Widget::on_stopFullScanButton_clicked() // stop scan
 }
 
 
-void Widget::on_chooseDirectoryButton_clicked() // open file directory to choose folder
+void Widget::on_chooseFolderButton_clicked() // open file directory to choose folder
 {
     QString filename = QFileDialog::getExistingDirectory(this, "Choose Folder");
-    ui->plainTextEdit_2->setPlainText(filename.toUtf8());
-}
-
-
-void Widget::on_folderScanBox_textChanged() // reformat filepath to be used in cmdprompt
-{
-    QString path = ui->plainTextEdit_2->toPlainText();
-    path.replace("/","\\");
-    scan.setPath(path);
+    ui->plainTextEdit_3->setPlainText(filename.toUtf8());
 }
 
 
@@ -296,4 +326,99 @@ int Widget::getIndex() { // proxy to get index of page and return it to scan
 
 void Widget::lockText() { // textboxes do not take input
     ui->plainTextEdit->setReadOnly(1); //fullScanBox
-    ui->plainTextEdit_2->setReadOnly(1);} //folderScanBox
+    ui->plainTextEdit_2->setReadOnly(1); //folderScanBox
+    ui->plainTextEdit_3->setReadOnly(1); //folderScanBox
+}
+
+bool Widget::isDailyChecked() {
+    bool daily;
+    if(ui->dailyCheckBox->isChecked()) {
+        daily = 1;
+    }
+    return daily;
+}
+
+bool Widget::isWeeklyChecked() {
+    bool weekly;
+    if(ui->weeklyCheckBox->isChecked()) {
+        weekly = 1;
+    }
+    return weekly;
+}
+
+bool Widget::isMonthlyChecked() {
+    bool monthly;
+    if(ui->monthlyCheckBox->isChecked()) {
+        monthly = 1;
+    }
+    return monthly;
+}
+
+int Widget::giveMonth() {
+    return ui->calendarWidget->monthShown();
+}
+
+QString Widget::giveDate() {
+    return ui->calendarWidget->selectedDate().toString();
+}
+
+int Widget::giveWeekNum() {
+    return ui->calendarWidget->selectedDate().QDate::weekNumber();
+
+}
+
+void Widget::setCheckBoxes() {
+    std::fstream file;
+    file.open("..\\Custodio\\dateChecksAndFlags\\mCheck.txt");
+    std::string str;
+     while (1) {
+        file >> str;
+        if (file.eof())
+            break;
+     }
+    file.close();
+    if (str == "1") {
+        ui->monthlyCheckBox->setChecked(1);
+    } else {
+        ui->monthlyCheckBox->setChecked(0);
+    }
+    file.open("..\\Custodio\\dateChecksAndFlags\\weeklyCheck.txt");
+     while (1) {
+        file >> str;
+        if (file.eof())
+            break;
+     }
+     file.close();
+    if (str == "1") {
+        ui->weeklyCheckBox->setChecked(1);
+    } else {
+        ui->weeklyCheckBox->setChecked(0);
+    }
+    file.open("..\\Custodio\\dateChecksAndFlags\\dailyCheck.txt");
+     while (1) {
+        file >> str;
+        if (file.eof())
+            break;
+     }
+     file.close();
+    if (str == "1") {
+        ui->dailyCheckBox->setChecked(1);
+    } else {
+        ui->dailyCheckBox->setChecked(0);
+    }
+}
+
+void Widget::on_plainTextEdit_5_textChanged()
+{
+    QString path = ui->plainTextEdit_5->toPlainText();
+    path.replace("/","\\\\");
+    scan.savePath(path);
+}
+
+void Widget::on_plainTextEdit_3_textChanged()
+{
+    QString path = ui->plainTextEdit_3->toPlainText();
+    path.replace("/","\\");
+    scan.setPath(path);
+}
+
