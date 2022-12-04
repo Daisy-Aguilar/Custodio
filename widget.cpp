@@ -34,7 +34,9 @@ Widget::Widget(QWidget *parent)
     connect(&scan,&gigaScan::giveWeekNum,this,&Widget::giveWeekNum);
     isMonthlyChecked();
     setCheckBoxes();
+    scanOnSchedule();
     ui->calendarWidget->setVisible(0);
+    ui->plainTextEdit_5->setPlainText(readPath().replace("\\\\","/"));
 }
 
 Widget::~Widget()
@@ -422,3 +424,21 @@ void Widget::on_plainTextEdit_3_textChanged()
     scan.setPath(path);
 }
 
+QString Widget::readPath() {
+    std::fstream file;
+    file.open("..\\Custodio\\savedPath.txt");
+    std::string str;
+     while (1) {
+        file >> str;
+        if (file.eof())
+            break;
+     }
+    file.close();
+    QString path = QString::fromStdString(str);
+    path.replace("_"," ");
+    return path;
+}
+
+void Widget::scanOnSchedule() {
+    scan.scheduledScan();
+}

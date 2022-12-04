@@ -18,7 +18,6 @@ public:
     QString folderCommand(); // for inputting folderscan command
     QString scheduledScan();
     void savePath(QString pathToSave);
-    QString readPath();
 
 signals:
     void output(QString data); // function that displays our data to a widget

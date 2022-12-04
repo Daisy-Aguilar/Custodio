@@ -80,6 +80,7 @@ QString gigaScan::getPath() const { // set and getPath are a proxy to get the pa
 }
 
 void gigaScan::savePath(QString pathToSave) {
+    pathToSave.replace(" ","_");
     std::string pathToWrite = pathToSave.toStdString();
     std::fstream file;
     file.open("..\\Custodio\\savedPath.txt");
@@ -87,19 +88,6 @@ void gigaScan::savePath(QString pathToSave) {
     file.close();
 }
 
-QString gigaScan::readPath() {
-    std::fstream file;
-    file.open("..\\Custodio\\savedPath.txt");
-    std::string str;
-     while (1) {
-        file >> str;
-        if (file.eof())
-            break;
-     }
-    file.close();
-    QString path = QString::fromStdString(str);
-    return path;
-}
 
 QString gigaScan::scheduledScan() {
     std::fstream file;
