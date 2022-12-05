@@ -33,7 +33,6 @@ Widget::Widget(QWidget *parent)
     connect(&scan,&gigaScan::giveDate,this,&Widget::giveDate);
     connect(&scan,&gigaScan::giveWeekNum,this,&Widget::giveWeekNum);
     connect(&scan,&gigaScan::readPath,this,&Widget::readPath);
-    isMonthlyChecked();
     setCheckBoxes();
     ui->calendarWidget->setVisible(0);
     ui->plainTextEdit_5->setPlainText(readPath().replace("\\\\","/"));

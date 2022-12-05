@@ -44,7 +44,8 @@ QString gigaScan::fullScanCmd() { // creates the command to run a fullscan to en
     QByteArray command;
     QByteArray clamavPath = "..\\Custodio\\clamAVFiles\\";
 
-    command.append(clamavPath+"clamscan -r -i -l ..\\Custodio\\clamAVLog --move=..\\Custodio\\Quarantine C:\\ \r \n");
+    command.append(clamavPath+"clamscan -r -i -l ..\\Custodio\\clamAVLog --move=..\\Custodio\\Quarantine C:\\ \n \r");
+    emit output(command);
     return command;
 }
 
@@ -56,7 +57,7 @@ QString gigaScan::updateDatabase() {
 QString gigaScan::deleteQuarantine() {
     QByteArray command;
     QByteArray clamavPath = "..\\Custodio\\clamAVFiles\\";
-    command.append(clamavPath+"clamscan -i --remove=yes ..\\Custodio\\Quarantine \r \n");
+    command.append(clamavPath+"clamscan -i --remove=yes ..\\Custodio\\Quarantine \n \r");
     return command;
 }
 
@@ -68,7 +69,7 @@ void gigaScan::inputCommand() { // depending on page index, return different sca
        cmdPrompt.write(folderCommand().toUtf8());
     }
     if(getIndex() == 0) {
-        cmdPrompt.write(scheduledScan().toUtf8());
+       cmdPrompt.write(scheduledScan().toUtf8());
     }
     if(getIndex() == 1) {
         cmdPrompt.write(updateDatabase().toUtf8());
@@ -89,7 +90,7 @@ QString gigaScan::folderCommand() { // returns commands with the specific file d
 void gigaScan::readyReadStandardOutput() { // returns data from cmd to qprocess
     if (!isRunning) return;
     QByteArray data = cmdPrompt.readAllStandardOutput();
-    emit output(data);
+    emit output(data.trimmed());
 }
 
 void gigaScan::setPath(const QString &newPath) {
@@ -143,9 +144,7 @@ QString gigaScan::scheduledScan() {
     int savedWeek = std::stoi(week);
     command.append(clamavPath+"clamscan -r -i -l ..\\Custodio\\clamAVLog --move=..\\Custodio\\Quarantine '"+readPath().toUtf8()+ "' \r \n");
     if (isDailyChecked() == 1) {
-        emit output("DAILY IS CHECKED");
         if(savedDate != giveDate().replace(" ","")) {
-            emit output("SAVED DATE DIF");
             std::string newDate = giveDate().replace(" ","").toStdString();
             std::ofstream file;
             file.open("..\\Custodio\\dateChecksAndFlags\\date.txt");
