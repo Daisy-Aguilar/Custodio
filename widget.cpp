@@ -5,6 +5,8 @@
 #include <fstream>
 #include <iostream>
 #include <QDate>
+#include <QUrl>
+#include <QDesktopServices>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -177,7 +179,7 @@ void Widget::on_backButton_4_clicked() // move between pages
 
 void Widget::on_helpButton_clicked()
 {
-    //ui->stackedWidget->setCurrentIndex();
+    QDesktopServices::openUrl(QUrl("https://github.com/Daisy-Aguilar/Custodio", QUrl::TolerantMode));
 }
 
 
@@ -189,7 +191,8 @@ void Widget::on_backButton_0_clicked()
 
 void Widget::on_helpButton_1_clicked()
 {
-    //ui->stackedWidget->setCurrentIndex();
+    ui->stackedWidget->setCurrentIndex(1);
+    scan.startCmd();
 }
 
 
