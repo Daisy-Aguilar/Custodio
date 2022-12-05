@@ -45,7 +45,7 @@ Widget::~Widget()
 }
 
 
-void Widget::on_startButton_clicked()
+void Widget::on_startButton_clicked() // updates freshclam
 {
     ui->stackedWidget->setCurrentIndex(1);
     scan.startCmd();

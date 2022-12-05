@@ -24,7 +24,7 @@ public:
 signals:
     void output(QString data); // function that displays our data to a widget
     int getIndex(); // proxy to get index to scan
-    bool isDailyChecked();
+    bool isDailyChecked(); // flag
     bool isWeeklyChecked();
     bool isMonthlyChecked();
     int giveMonth();

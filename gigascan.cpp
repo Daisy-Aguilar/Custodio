@@ -111,7 +111,7 @@ void gigaScan::savePath(QString pathToSave) {
 }
 
 
-QString gigaScan::scheduledScan() {
+QString gigaScan::scheduledScan() { // scheduled scan to run at launch
     std::fstream file;
     file.open("..\\Custodio\\dateChecksAndFlags\\month.txt");
     std::string str;

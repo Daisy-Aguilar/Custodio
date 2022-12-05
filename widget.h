@@ -105,7 +105,7 @@ private slots:
     bool isWeeklyChecked();
     bool isMonthlyChecked();
     int giveMonth();
-    void setCheckBoxes();
+    void setCheckBoxes(); // sets scheduled scan boxes
     QString giveDate();
     int giveWeekNum();
     void lockText();
