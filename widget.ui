@@ -1414,7 +1414,7 @@ background-color: rgb(255, 255, 255);</string>
        <string notr="true">background-color: rgb(151, 168, 201);</string>
       </property>
       <property name="text">
-       <string>View GitHub</string>
+       <string>Update Database</string>
       </property>
      </widget>
      <widget class="Line" name="line_3">
@@ -1433,10 +1433,10 @@ background-color: rgb(255, 255, 255);</string>
      <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>20</y>
-        <width>51</width>
-        <height>16</height>
+        <x>55</x>
+        <y>10</y>
+        <width>60</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="font">
@@ -1449,14 +1449,36 @@ background-color: rgb(255, 255, 255);</string>
        <string notr="true">color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>Help</string>
+       <string>Update</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_11">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>35</x>
         <y>70</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Century</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Click below to</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>90</y>
         <width>121</width>
         <height>16</height>
        </rect>
@@ -1471,37 +1493,15 @@ background-color: rgb(255, 255, 255);</string>
        <string notr="true">color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>Click below to learn</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_12">
-      <property name="geometry">
-       <rect>
-        <x>48</x>
-        <y>90</y>
-        <width>81</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Century</family>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>more about</string>
+       <string>guarantee that you</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_13">
       <property name="geometry">
        <rect>
-        <x>30</x>
+        <x>10</x>
         <y>110</y>
-        <width>101</width>
+        <width>141</width>
         <height>16</height>
        </rect>
       </property>
@@ -1515,13 +1515,13 @@ background-color: rgb(255, 255, 255);</string>
        <string notr="true">color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>Custodio on our</string>
+       <string>have the most updated</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_14">
       <property name="geometry">
        <rect>
-        <x>36</x>
+        <x>30</x>
         <y>130</y>
         <width>101</width>
         <height>16</height>
@@ -1537,7 +1537,7 @@ background-color: rgb(255, 255, 255);</string>
        <string notr="true">color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>official GitHub</string>
+       <string>virus definitions</string>
       </property>
      </widget>
     </widget>
